@@ -25,7 +25,7 @@ metadata:
     capabilities: Seamless Upgrades
     categories: Monitoring, Developer Tools
     containerImage: quay.io/cryostat/cryostat-operator:4.2.0-dev
-    createdAt: "2026-04-13T22:58:30Z"
+    createdAt: "2026-04-13T22:58:44Z"
     description: JVM monitoring and profiling tool
     operatorframework.io/initialization-resource: |-
       {
@@ -1727,26 +1727,6 @@ spec:
       containerPort: 443
       deploymentName: cryostat-operator-controller
       failurePolicy: Fail
-      generateName: mcryostat-v1beta2.kb.io
-      rules:
-        - apiGroups:
-            - operator.cryostat.io
-          apiVersions:
-            - v1beta2
-          operations:
-            - CREATE
-            - UPDATE
-          resources:
-            - cryostats
-      sideEffects: None
-      targetPort: 9443
-      type: MutatingAdmissionWebhook
-      webhookPath: /mutate-operator-cryostat-io-v1beta2-cryostat
-    - admissionReviewVersions:
-        - v1
-      containerPort: 443
-      deploymentName: cryostat-operator-controller
-      failurePolicy: Fail
       generateName: mcryostat.kb.io
       rules:
         - apiGroups:
@@ -1787,26 +1767,6 @@ spec:
       targetPort: 9443
       type: MutatingAdmissionWebhook
       webhookPath: /mutate--v1-pod
-    - admissionReviewVersions:
-        - v1
-      containerPort: 443
-      deploymentName: cryostat-operator-controller
-      failurePolicy: Fail
-      generateName: vcryostat-v1beta2.kb.io
-      rules:
-        - apiGroups:
-            - operator.cryostat.io
-          apiVersions:
-            - v1beta2
-          operations:
-            - CREATE
-            - UPDATE
-          resources:
-            - cryostats
-      sideEffects: None
-      targetPort: 9443
-      type: ValidatingAdmissionWebhook
-      webhookPath: /validate-operator-cryostat-io-v1beta2-cryostat
     - admissionReviewVersions:
         - v1
       containerPort: 443
