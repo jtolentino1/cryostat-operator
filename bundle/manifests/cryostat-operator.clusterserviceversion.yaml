@@ -41,7 +41,7 @@ metadata:
           }
         }
       }
-    operators.operatorframework.io/builder: operator-sdk-v1.31.0
+    operators.operatorframework.io/builder: operator-sdk-v1.33.0
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
     repository: github.com/cryostatio/cryostat-operator
     support: Cryostat Community
@@ -166,7 +166,7 @@ spec:
             path: declarativeCredentials[0].secretName
             x-descriptors:
               - urn:alm:descriptor:io.kubernetes:Secret
-          - description: Enable Cryostat audit logging. New Cryostat CRs default to true, but existing CRs created before this field was introduced remain unchanged until this property is explicitly set.
+          - description: 'Enable Cryostat audit logging. New Cryostat CRs default to true, but existing CRs created before this field was introduced remain unchanged until this property is explicitly set. Warning: enabling audit logging increases database storage usage over time.'
             displayName: Enable Audit Logging
             path: enableAudit
             x-descriptors:
