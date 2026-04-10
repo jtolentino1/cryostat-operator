@@ -114,9 +114,9 @@ CONTROLLER_TOOLS_VERSION ?= 0.16.5
 GOLICENSE_VERSION ?= 1.29.0
 OPM_VERSION ?= 1.23.0
 #ENVTEST_VERSION is the version of controller-runtime release branch to fetch the envtest setup script (i.e. release-0.20)
-ENVTEST_VERSION ?= release-0.19
+ENVTEST_VERSION ?= release-0.21
 # ENVTEST_K8S_VERSION refers to the version of kubebuilder assets to be downloaded by envtest binary.
-ENVTEST_K8S_VERSION ?= 1.31.0
+ENVTEST_K8S_VERSION ?= 1.33.0
 
 # Scorecard ImagePullPolicy is hardcoded to IfNotPresent
 # See: https://github.com/operator-framework/operator-sdk/pull/4762

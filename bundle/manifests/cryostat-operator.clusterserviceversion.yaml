@@ -25,7 +25,7 @@ metadata:
     capabilities: Seamless Upgrades
     categories: Monitoring, Developer Tools
     containerImage: quay.io/cryostat/cryostat-operator:4.2.0-dev
-    createdAt: "2026-04-13T22:58:44Z"
+    createdAt: "2026-04-13T22:59:01Z"
     description: JVM monitoring and profiling tool
     operatorframework.io/initialization-resource: |-
       {
@@ -1504,7 +1504,6 @@ spec:
                       - --leader-elect
                       - --health-probe-bind-address=:8081
                       - --webhook-cert-path=/tmp/k8s-webhook-server/serving-certs
-                      - --metrics-cert-path=/tmp/k8s-metrics-server/metrics-certs
                     command:
                       - /manager
                     env:
@@ -1559,28 +1558,12 @@ spec:
                       capabilities:
                         drop:
                           - ALL
-                    volumeMounts:
-                      - mountPath: /tmp/k8s-metrics-server/metrics-certs
-                        name: metrics-certs
-                        readOnly: true
                 securityContext:
                   runAsNonRoot: true
                   seccompProfile:
                     type: RuntimeDefault
                 serviceAccountName: cryostat-operator-service-account
                 terminationGracePeriodSeconds: 10
-                volumes:
-                  - name: metrics-certs
-                    secret:
-                      items:
-                        - key: ca.crt
-                          path: ca.crt
-                        - key: tls.crt
-                          path: tls.crt
-                        - key: tls.key
-                          path: tls.key
-                      optional: false
-                      secretName: metrics-server-cert
       permissions:
         - rules:
             - apiGroups:

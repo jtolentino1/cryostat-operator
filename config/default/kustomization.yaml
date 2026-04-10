@@ -54,9 +54,9 @@ patches:
 # Uncomment the patches line if you enable Metrics and CertManager
 # [METRICS-WITH-CERTS] To enable metrics protected with certManager, uncomment the following line.
 # This patch will protect the metrics with certManager self-signed certs.
-- path: cert_metrics_manager_patch.yaml
-  target:
-    kind: Deployment
+#- path: cert_metrics_manager_patch.yaml
+#  target:
+#    kind: Deployment
 - path: image_tag_patch.yaml
 - path: image_pull_patch.yaml
 - path: webhook_object_selector_patch.yaml
