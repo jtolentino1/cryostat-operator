@@ -1,4 +1,3 @@
-
 # Prometheus Monitor Service (Metrics)
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -17,4 +16,5 @@ spec:
         insecureSkipVerify: true
   selector:
     matchLabels:
+      app.kubernetes.io/name: cryostat-operator
       control-plane: controller-manager
