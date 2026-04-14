@@ -7,6 +7,6 @@ metadata:
     control-plane: controller-manager
     app.kubernetes.io/name: cryostat-operator
     app.kubernetes.io/managed-by: kustomize
-  name: cryostat-operator-ca-bundle
+  name: ca-bundle
   namespace: system
 data: {}
