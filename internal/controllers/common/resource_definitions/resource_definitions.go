@@ -474,7 +474,7 @@ func NewPodForCR(cr *model.CryostatInstance, specs *ServiceSpecs, imageTags *Ima
 					Items: []corev1.KeyToPath{
 						{
 							Key:  key,
-							Path: fmt.Sprintf("%s_%s", cert.SecretName, key),
+							Path: fmt.Sprintf("secret_%s_%s", cert.SecretName, key),
 							Mode: &readOnlyMode,
 						},
 					},

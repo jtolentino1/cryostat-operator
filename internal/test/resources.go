@@ -3865,7 +3865,7 @@ func (r *TestResources) NewVolumesWithSecrets() []corev1.Volume {
 				Items: []corev1.KeyToPath{
 					{
 						Key:  "test.crt",
-						Path: "testCert1_test.crt",
+						Path: "secret_testCert1_test.crt",
 						Mode: &mode,
 					},
 				},
@@ -3879,7 +3879,7 @@ func (r *TestResources) NewVolumesWithSecrets() []corev1.Volume {
 				Items: []corev1.KeyToPath{
 					{
 						Key:  "tls.crt",
-						Path: "testCert2_tls.crt",
+						Path: "secret_testCert2_tls.crt",
 						Mode: &mode,
 					},
 				},
