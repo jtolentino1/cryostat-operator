@@ -25,7 +25,7 @@ metadata:
     capabilities: Seamless Upgrades
     categories: Monitoring, Developer Tools
     containerImage: quay.io/cryostat/cryostat-operator:4.2.0-dev
-    createdAt: "2026-04-14T19:45:58Z"
+    createdAt: "2026-04-20T22:15:18Z"
     description: JVM monitoring and profiling tool
     operatorframework.io/initialization-resource: |-
       {
@@ -849,10 +849,22 @@ spec:
             path: targetDiscoveryOptions.discoveryPortNumbers
             x-descriptors:
               - urn:alm:descriptor:com.tectonic.ui:fieldDependency:targetDiscoveryOptions.disableBuiltInPortNumbers:true
-          - description: List of TLS certificates to trust when connecting to targets.
+          - description: |-
+              List of TLS certificates to trust when connecting to targets.
+              Each entry may reference either a Secret or a ConfigMap in the local namespace.
             displayName: Trusted TLS Certificates
             path: trustedCertSecrets
-          - description: Name of secret in the local namespace.
+          - description: |-
+              Name of config map in the local namespace.
+              Specify this or secretName. On OpenShift, service CA bundles typically use the
+              default key `service-ca.crt`.
+            displayName: Config Map Name
+            path: trustedCertSecrets[0].configMapName
+            x-descriptors:
+              - urn:alm:descriptor:io.kubernetes:ConfigMap
+          - description: |-
+              Name of secret in the local namespace.
+              Specify this or configMapName.
             displayName: Secret Name
             path: trustedCertSecrets[0].secretName
             x-descriptors:
@@ -1507,6 +1519,10 @@ spec:
                     command:
                       - /manager
                     env:
+                      - name: MIN_OPENSHIFT_VERSION
+                        value: 4.19.0
+                      - name: MAX_OPENSHIFT_VERSION
+                        value: 99.99.0
                       - name: RELATED_IMAGE_OAUTH2_PROXY
                         value: quay.io/oauth2-proxy/oauth2-proxy:latest
                       - name: RELATED_IMAGE_OPENSHIFT_OAUTH_PROXY
